@@ -1,0 +1,10 @@
+.env
+config/env.php
+config/config.php
+test.php
+test1.php
+xmls/*
+examples/
+*.xml
+resources/logs/*
+resources/xmls/*
