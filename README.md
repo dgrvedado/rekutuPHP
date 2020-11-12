@@ -76,13 +76,13 @@ Toda esta lógica se basa en la siguiente estructura:
 
 * '/app/core' -> Directorio del nucleo del sistema. Posee varios archivos 'autoload.php', 'Controller.php', 'Model.php', 'Router.php' y 'View.php'. En todo caso index parte del llamado de autoload y el mismo será quien cargue todas las funciones de los diferentes archivos.
 
-** 'Router.php' -> Define las rutas del sistema, evaluando si existe la clase y las funciones que serán parte de las rutas a ser accedidas.
+    * 'Router.php' -> Define las rutas del sistema, evaluando si existe la clase y las funciones que serán parte de las rutas a ser accedidas.
 
-** 'Controller.php' -> Sería el Controlador principal que posee la carga del modelo propio y de las vistas definidas dentro del controlador de cada sección.
+    * 'Controller.php' -> Sería el Controlador principal que posee la carga del modelo propio y de las vistas definidas dentro del controlador de cada sección.
 
-** 'Model.php' -> Sería el modelo principal con acceso a la conexión a la BD, y las funciones que realizan las tareas generales de ABM en la BD del sistema.
+    * 'Model.php' -> Sería el modelo principal con acceso a la conexión a la BD, y las funciones que realizan las tareas generales de ABM en la BD del sistema.
 
-** 'View.php' -> No es más que la lógica que arma las vistas de cada función del controlador.
+    * 'View.php' -> No es más que la lógica que arma las vistas de cada función del controlador.
 
 * '/app/helpers/' -> Directorio que contiene un archivo para verificar que existen los metodos y funciones.
 
