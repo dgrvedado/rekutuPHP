@@ -68,7 +68,8 @@ En dependencia de las secciones que Ud desee realizar, yo propongo la siguiente 
 
 En este caso el archivo principal será '_layout.php' el mismo tendrá los include de cada una de las secciones antes mencionadas.
 
-* Explicación del Sistema
+
+4- ***Explicación del Sistema***
 
 Basamos el funcionamiento en un index que siempre recibirá todas las solicitudes request, por medio del .htaccess que redirige todas al index en si. El index chequeará si por medio de un autload las funciones existentes por medio de las rutas definidas en la URL, y de ella saldrán los controladores y métodos a ser usados. 
 
@@ -88,4 +89,4 @@ Toda esta lógica se basa en la siguiente estructura:
 
 * '/app/controllers' -> Se crearán todas las carpetas por cada controlador y dentro el archivo controlador con la forma 'NombreController.php'
 
-* '/app/models'      -> Se creará archivos por cada controlador si lo requeier 
+* '/app/models'      -> Se creará archivos por cada controlador si lo requiere 
