@@ -22,42 +22,18 @@ class LoginController extends Controller {
     }
 
     public function index() {
-        $this->dat = $this->model->getEmproy();
         $this->params = array(
-                        'dat'    => $this->dat,
                         'error'  => '', 
                         'objeto' => 'form.login',
                         'index'  => true);
         $this->render(__CLASS__, $this->params);
     }
 
-    public function verify($uid, $id_emproy) {
-        if ($uid == 1) {
-            return true;
-        } else {
-            $n = $this->model->dbSelect('1',DB_DATABASE.'.user_emproy',"id_user = $id AND id_emproy = $id_emproy");
-            if ($n[0][1] == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-
-    public function verifySecure($id_emproy) {
-        $verify = $this->model->dbSelect('*',DB_DATABASE.'.setting',"id = ".$id_emproy);
-        if ($verify[0]["genPKey"] == 1 && $verify[0]["genCertRSA"] == 1 && $verify[0]["mailSender"] == 1
-            && $verify[0]["genPKCS12"] == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function singin($request) {
-        if  (isset($request['username']) && isset($request['password'])) {
+        if  (isset($request['username'])) {
             $login = $this->model->userLogin($request['username'],$request['password']);
-            if ($this->verify($login->uid, $request['empresa']) === true) {
+            if ($login != false) {
+
                 if ($login->uid == 1 && $request['empresa'] == 0) {
                     $this->dat = $this->model->getEmproy(-1);
                 } else if ($login->uid == 1 && $request['empresa']) {

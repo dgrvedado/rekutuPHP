@@ -1,16 +1,22 @@
 <?php 
 
 if (@$index == true) {
-    require_once("_head.php");
+    require_once("_head.php"); ?>
+<body class="hold-transition login-page">
+    <div class="login-box">
+<?php
+
 } else {
-    require_once("_headers.php");
+    require_once("_headers.php"); ?>
+<body class="hold-transition sidebar-mini layout-fixed">
+<!-- Site wrapper -->
+<div class="wrapper">
+<?php
 }
 
 
 ?>
-<body class="hold-transition sidebar-mini layout-fixed">
-<!-- Site wrapper -->
-<div class="wrapper">
+
 <?php
 
 if (@$index == false) {
