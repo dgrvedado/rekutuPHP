@@ -22,6 +22,8 @@ pasos.
 git clone https://github.com/dgrvedado/rekutuPHP.git
 ```
 
+> Ojo: Github ha hecho cambios en su política de acceso a los repos vía http/s
+
 2- ***Crear archivo de configuración***:
 
 ```
@@ -46,15 +48,15 @@ define('FOLDER_PATH',     '');
 
 Aquí deberá definir las variables de sus conexión a la BD tanto de root como del usuario rekutuPHP o el que decida, en el caso de root es impresindible para la creación inicial de bases de datos y el usuario.
 
-Realizada la modificación salve el arhivo y continue con el siguiente paso, que sería la configuración de sus requerimentos del proyecto. Puede utilizar cualquier template o plantilla, en nuestro ejemplo usaremos AdminLTE 3.
+Realizada la modificación salve el arhivo y continue con el siguiente paso, que sería la configuración de sus requerimentos del proyecto. Puede utilizar cualquier template o plantilla, en nuestro ejemplo usaremos [Matrix Admin Panel](https://matrixadmin.wrappixel.com/).
 
 * Personalizar Plantilla
 
 Definido que plantilla usaremos, debemos solamente desmembrar el template para ser usado como plantilla en todo nuestro proyecto.
 
-Directorio: /resources/views/themes/adminlte/
+Directorio: /resources/views/themes/matrix/
 
-'adminlte' puede ser el nombre de su tema o template.
+'matrix' puede ser el nombre de su tema o template.
 
 En dependencia de las secciones que Ud desee realizar, yo propongo la siguiente seccionamiento:
 * '_foot.php'    -> Pié de cada página, este va incluido en _wrapper.php

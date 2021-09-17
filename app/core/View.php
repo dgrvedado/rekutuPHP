@@ -1,15 +1,6 @@
  <?php
 
-//defined('BASEPATH') or exit('No se permite acceso directo');
-if ($_SERVER['SERVER_PORT'] != 80 && $_SERVER['SERVER_PORT'] != 443) {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"];
-} elseif ($_SERVER['SERVER_PORT'] == 443) {
-    $gouri = 'https://'.$_SERVER["SERVER_NAME"];
-} else {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"];
-}
-
-defined('BASEPATH') or header('Location: '.$gouri);
+include_once(CORE_PATH.'/index.php');
 
 /**
 * Vista base
@@ -52,7 +43,7 @@ class View {
         if(class_exists($this->controller_name)) {
             $objeto = $this->params['objeto'];
             $this->level = strtolower($this->controller_name);
-            $file_name = str_replace('controller', '', $this->level);   
+            $file_name = str_replace('controller', '', $this->level);
             $this->template = $this->getContentTemplate($file_name, $objeto);
             echo $this->template;
         } else {
@@ -75,7 +66,7 @@ class View {
             ob_end_clean();
             return $template;
         }else{
-            throw new Exception("Error No existe $this->file_path");
+            throw new Exception("Error No existe $file_path");
         }
     }
 

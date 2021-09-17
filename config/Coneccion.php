@@ -28,7 +28,7 @@ class Conex {
         $this->db_drive = DB_DRIVE;
     }
 
-    public function getDBAInstall() {
+    public function getDBInstall() {
         $this->db_host  = DB_SERVER;
         $this->db_port  = DB_PORT;
         $this->db_user  = DB_ROOT;
@@ -44,7 +44,7 @@ class Conex {
         }
     }
 
-    public function getDBA() {
+    public function getDB() {
         try {
             $Connex = new PDO($this->db_drive.":host=".$this->db_host.";port=".$this->db_port,$this->db_user, $this->db_pass);
             $Connex->exec("SET NAMES utf8mb4");

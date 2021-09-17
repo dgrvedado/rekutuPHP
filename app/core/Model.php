@@ -1,14 +1,6 @@
 <?php
 
-if ($_SERVER['SERVER_PORT'] != 80 && $_SERVER['SERVER_PORT'] != 443) {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"];
-} elseif ($_SERVER['SERVER_PORT'] == 443) {
-    $gouri = 'https://'.$_SERVER["SERVER_NAME"];
-} else {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"];
-}
-
-defined('BASEPATH') or header('Location: '.$gouri);
+include_once(CORE_PATH.'/index.php');
 
 /**
  * Modelo base
@@ -41,7 +33,7 @@ class Model {
             $this->id = $this->id[0]['id'];
         }
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             $accion = base64_encode($data);
             $sql = "INSERT INTO ".DB_DATABASE.".logger (fecha, accion, usuario) VALUE (NOW(),'".$accion."', '".$uid."')";
             $stmt = $db->prepare($sql);
@@ -56,7 +48,7 @@ class Model {
     /* Query General. Aquellos querys muy complejos se pueden pasar en esta funcion */
     public function dbQuery($query) {
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             $stmt = $db->prepare($query);
             //echo "SELECT $field FROM $table WHERE $where";
             //$stmt->bindParam("field", $field,PDO::PARAM_INT);
@@ -75,7 +67,7 @@ class Model {
     /* SELECT. Es un Select general de cualquier Tabla que se pase el parametro */
     public function dbSelect($field,$table,$where) {
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             $stmt = (empty($where)) ? $db->prepare("SELECT ".$field." FROM ".$table) : $db->prepare("SELECT ".$field." FROM ".$table." WHERE ".$where);
             //echo "SELECT $field FROM $table WHERE $where";
             //$stmt->bindParam("field", $field,PDO::PARAM_INT);
@@ -94,7 +86,7 @@ class Model {
     /* DELETE. Delete general para cualquier tabla que se pase en el array request */
     public function dbDelete($request) {
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             $sql = "DELETE FROM ".$request["table"]." WHERE ".$request["where"];
             //echo $sql; exit;
             $stmt = $db->prepare($sql);
@@ -113,7 +105,7 @@ class Model {
     /* UPDATE. Update general para cualquier tabla que se pase en el array request */
     public function dbUpdate($request) {
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             //echo "UPDATE ".$request['table']." SET ".$request['data']." WHERE ".$request['where'];
             $sql = "UPDATE ".$request['table']." SET ".$request['data']." WHERE ".$request['where'];
             $stmt = $db->prepare($sql);
@@ -134,7 +126,7 @@ class Model {
     /* INSERT. Insert general para cualquier tabla que se pase en el array request */
     public function dbInsert($request) {
         try {
-            $db = $this->db->getDBA();
+            $db = $this->db->getDB();
             $sql = "INSERT INTO ".$request['table']." (".$request['field'].") VALUES (".$request['data'].")";
             //echo $sql; //exit;
             $stmt = $db->prepare($sql);
