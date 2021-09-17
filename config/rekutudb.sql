@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.6.4-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.19  Distrib 10.3.29-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: rekutudb
+-- Host: localhost    Database: rekutudb
 -- ------------------------------------------------------
--- Server version	10.6.4-MariaDB-1:10.6.4+maria~focal
+-- Server version	10.3.29-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -47,6 +47,27 @@ CREATE TABLE `rols` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `setting`
+--
+
+DROP TABLE IF EXISTS `setting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rucEmproy` varchar(18) NOT NULL,
+  `nameEmproy` varchar(150) NOT NULL,
+  `addrEmproy` varchar(255) NOT NULL,
+  `phoneEmproy` varchar(25) NOT NULL,
+  `otherPhoneEmproy` varchar(25) DEFAULT NULL,
+  `emailEmproy` varchar(50) NOT NULL,
+  `tockenEmproy` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rucEmproyUQ` (`rucEmproy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `users`
 --
 
@@ -74,4 +95,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-13  6:53:42
+-- Dump completed on 2021-09-17 10:32:41
