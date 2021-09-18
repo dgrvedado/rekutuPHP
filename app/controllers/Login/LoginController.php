@@ -17,6 +17,7 @@ class LoginController extends Controller {
         $this->params = array(
                         'error'  => '', 
                         'objeto' => 'form.login',
+                        'title'  => 'Login',
                         'index'  => true);
         $this->render(__CLASS__, $this->params);
     }

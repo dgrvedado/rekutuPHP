@@ -14,6 +14,3 @@
     <script src="<?=ASSETS_URL?>/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?=ASSETS_URL?>/dist/js/custom.min.js"></script>
-</body>
-</html>
-

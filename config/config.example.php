@@ -2,15 +2,7 @@
 
 //defined('BASEPATH') or exit('No se permite acceso directo');
 //
-if ($_SERVER['SERVER_PORT'] != 80 && $_SERVER['SERVER_PORT'] != 443) {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"];
-} elseif ($_SERVER['SERVER_PORT'] == 443) {
-    $gouri = 'https://'.$_SERVER["SERVER_NAME"];
-} else {
-    $gouri = 'http://'.$_SERVER["SERVER_NAME"];
-}
-
-defined('BASEPATH') or header('Location: '.$gouri);
+include_once(__DIR__.'/index.php');
 
 date_default_timezone_set('America/Asuncion');
 //ini_set('memory_limit','512M');

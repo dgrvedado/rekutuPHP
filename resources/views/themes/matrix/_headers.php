@@ -12,9 +12,6 @@ defined('BASEPATH') or header('Location: '.$gouri);
 //exit('No se permite acceso directo');
 
 ?>
-<!DOCTYPE html>
-<html lang="es">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

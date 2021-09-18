@@ -2,57 +2,32 @@
 
 include_once(CORE_PATH.'/index.php');
 
-class LoginController extends Controller {
-
-    private $session;
+class InstallController extends Controller {
 
     public function __construct() {
         parent::__construct(__CLASS__);
         //$this->name_model = str_replace('Controller', '', __CLASS__);
         //$this->loadModel($this->name_model);
-        $this->session = new Session();
     }
 
     public function index() {
         $this->params = array(
-                        'error'  => '', 
-                        'objeto' => 'form.login',
-                        'index'  => true);
+                        'error'   => '',
+                        'objeto'  => 'index',
+                        'title'   => 'Install',
+                        'install' => true);
         $this->render(__CLASS__, $this->params);
     }
 
-    public function singin($request) {
-        if  (isset($request['username'])) {
-            $login = $this->model->userLogin($request['username'],$request['password']);
-            if ($login != false) {
+    public function install() {
+        if($this->model->createDataBase() === true) {
+            if($this->model->createDataBase() === true)
+            $this->result(['a' => $a, 'mensaje' => $sujeto.' eliminado']);
+        } else {
+            $this->result(['a' => $a, 'mensaje' => $sujeto.' no eliminado']);
+        }
 
-                if ($login->uid == 1 && $request['empresa'] == 0) {
-                    $this->dat = $this->model->getEmproy(-1);
-                } else if ($login->uid == 1 && $request['empresa']) {
-                    $this->dat = $this->model->getEmproy($request['empresa']);
-                } else {
-                    $this->dat = $this->model->getEmproy($request['empresa']);
-                }
-                $this->session->putCookie($login->tocken);
-                if ($login && $this->dat[0]['id'] != 0) {
-                    $this->session->init();
-                    $this->session->add('userID',  $login->id);
-                    $this->session->add('rolID', $login->id_rol);
-                    $this->session->add('name', $login->name);
-                    $this->model->loging("INGRESO AL SISTEMA: ".date('Y-m-d H:i:s'));
-                    //var_dump($this->session->getStatus());
-                    //echo session_id();
-                    header('Location:'.BASE_URL.'/main');
-                } else {
-                    $this->dat = $this->model->getEmproy();
-                    $this->params = array(
-                            'dat'    => $this->dat,
-                            'error'  => 'Login Incorrecto. Acceso Denegado', 
-                            'objeto' => 'form.login',
-                            'index'  => true);
-                    $this->render(__CLASS__, $this->params);
-                }    
-            } else {
+
                 $this->dat = $this->model->getEmproy();
                 $this->params = array(
                         'dat'    => $this->dat,
@@ -60,7 +35,46 @@ class LoginController extends Controller {
                         'objeto' => 'form.login',
                         'index'  => true);
                 $this->render(__CLASS__, $this->params);
-            }
-        }   
     }
-} //Cierra Clase Login
+
+    public function result($request) {
+        $this->a = $request['a'];
+        if ($this->a == "C") {
+            $this->title = "Socios de Negocio (Clientes)";
+            $this->url = "listclients";
+            $this->cat = "C";
+        } else {
+            $this->title = "Socios de Negocio (Shipper's)";
+            $this->url = "listshippers";
+            $this->cat = "S";
+        }
+
+        $this->mensaje = $request['mensaje'];
+
+        if (strstr($this->mensaje, " no ")) {
+            $this->alert = "alert-danger";
+        } else {
+            $this->alert = "alert-success";
+        }
+
+        if (strstr($this->mensaje, "cread")) {
+            $this->Acc = "Crear ";
+        } else if (strstr($this->mensaje, "actualizad")) {
+            $this->Acc = "Actualizar ";
+        } else if (strstr($this->mensaje, "eliminad")) {
+            $this->Acc = "Eliminar ";
+        } else {
+            $this->Acc = "";
+        }
+        $this->params = array(
+                        'mensaje' => $this->mensaje,
+                        'alert'   => $this->alert,
+                        'acc'     => $this->Acc,
+                        'title'   => $this->title,
+                        'url'     => $this->url,
+                        'cat'     => $this->cat,
+                        'objeto'  => 'result'
+                        );
+        $this->render(__CLASS__, $this->params);
+    }
+}

@@ -24,33 +24,37 @@ git clone https://github.com/dgrvedado/rekutuPHP.git
 
 > Ojo: Github ha hecho cambios en su política de acceso a los repos vía http/s
 
-2- ***Crear archivo de configuración***:
+2- ***Editar el archivo config/env.php***:
+
+Aquí deberá definir las variables de sus conexión a la BD tanto de root como del usuario rekutuPHP o el que decida, en el caso de root es impresindible para la creación inicial de bases de datos y el usuario.
+
+Realizada la modificación salve el arhivo y continue con el siguiente paso.
+
+3- ***Ejecución de la Instalación Primaria***:
+
+Ejecute el siguiente comndo en la consola:
+
+```
+php -f app/inistall/install.php
+```
+
+4- ***Crear archivo de configuración***:
 
 ```
 cp config/config.example.php config/config.php
 ```
 
-En caso de que Ud decida poner su proyecto en una URL sin directorio de acceso 
-deberá proceder como sigue:
+Por lo general los sigueintes pasos no son necesarios realizarlos sin embargo, los exponemos para el conocimiento general de los entusiastas que deseen usar **rekutuPHP**
+
+Es importante tener una buena configuración, en ocaciones deseamos probar el proyecto antes de pasarlo a producción. Recomendamos cambiar la siguiente configuración (*línea 14*):
 
 ```php
-define('FOLDER_PATH',     '/rekutuPHP');
+define('CONFIG_PATH', __DIR__);
 ```
 
-En caso que si VirtualServer esté apuntando diretamente a su diretorio en el 
-DocumentRoot, Ud deberá poner esta Constante de la siguiente forma:
+# Personalizar Plantilla
 
-```php
-define('FOLDER_PATH',     '');
-```
-
-3- ***Editar el archivo config/env.php***:
-
-Aquí deberá definir las variables de sus conexión a la BD tanto de root como del usuario rekutuPHP o el que decida, en el caso de root es impresindible para la creación inicial de bases de datos y el usuario.
-
-Realizada la modificación salve el arhivo y continue con el siguiente paso, que sería la configuración de sus requerimentos del proyecto. Puede utilizar cualquier template o plantilla, en nuestro ejemplo usaremos [Matrix Admin Panel](https://matrixadmin.wrappixel.com/).
-
-* Personalizar Plantilla
+Puede utilizar cualquier template o plantilla, en nuestro ejemplo usaremos [Matrix Admin Panel](https://matrixadmin.wrappixel.com/).
 
 Definido que plantilla usaremos, debemos solamente desmembrar el template para ser usado como plantilla en todo nuestro proyecto.
 
@@ -71,7 +75,7 @@ En dependencia de las secciones que Ud desee realizar, yo propongo la siguiente 
 En este caso el archivo principal será '_layout.php' el mismo tendrá los include de cada una de las secciones antes mencionadas.
 
 
-4- ***Explicación del Sistema***
+# Explicación del Sistema
 
 Basamos el funcionamiento en un index que siempre recibirá todas las solicitudes request, por medio del .htaccess que redirige todas al index en si. El index chequeará si por medio de un autload las funciones existentes por medio de las rutas definidas en la URL, y de ella saldrán los controladores y métodos a ser usados. 
 
