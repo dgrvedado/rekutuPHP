@@ -35,7 +35,7 @@ class Model {
         try {
             $db = $this->db->getDB();
             $accion = base64_encode($data);
-            $sql = "INSERT INTO ".DB_DATABASE.".logger (fecha, accion, usuario) VALUE (NOW(),'".$accion."', '".$uid."')";
+            $sql = "INSERT INTO ".DB_DATABASE.".logger (fecha, accion, usuario) VALUE (NOW(),'".$accion."', '".$id."')";
             $stmt = $db->prepare($sql);
             $stmt->execute();
             $db = null;

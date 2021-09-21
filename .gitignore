@@ -8,3 +8,4 @@ examples/
 *.xml
 resources/logs/*
 resources/xmls/*
+.phpintel/*

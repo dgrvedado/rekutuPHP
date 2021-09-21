@@ -10,9 +10,9 @@ class LoginModel extends Model {
 
     /* User Login */
     public function userLogin($username,$password) {
-        $db = $this->db->getDBA();
+        $db = $this->db->getDB();
         $hash_password= hash('sha256', $password);
-        $stmt = $db->prepare("SELECT uid, type, name, tocken FROM ".DB_DATABASE.".users WHERE  (username=:username OR email=:username) AND  password=:hash_password");
+        $stmt = $db->prepare("SELECT * FROM ".DB_DATABASE.".users WHERE  (username=:username OR email=:username) AND  password=:hash_password");
         $stmt->bindParam("username", $username,PDO::PARAM_STR) ;
         $stmt->bindParam("hash_password", $hash_password,PDO::PARAM_STR) ;
         $stmt->execute();
@@ -29,7 +29,7 @@ class LoginModel extends Model {
     /* User Registration */
     public function userRegistration($type,$username,$password,$email,$name) {
         try {
-        $db = $this->db->getDBA();
+        $db = $this->db->getDB();
         $st = $db->prepare("SELECT uid FROM ".DB_DATABASE.".users WHERE username=:username OR email=:email");
         $st->bindParam("username", $username,PDO::PARAM_STR);
         $st->bindParam("email", $email,PDO::PARAM_STR);
@@ -65,7 +65,7 @@ class LoginModel extends Model {
             $sql = "SELECT * FROM ".DB_DATABASE.".users WHERE uid = $uid";
         }
         try {
-            $db = getDBA();
+            $db = getDB();
             $stmt = $db->prepare($sql);
             $stmt->bindParam("uid", $uid,PDO::PARAM_INT);
             $stmt->execute();

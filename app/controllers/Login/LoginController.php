@@ -25,39 +25,20 @@ class LoginController extends Controller {
     public function singin($request) {
         if  (isset($request['username'])) {
             $login = $this->model->userLogin($request['username'],$request['password']);
+            //echo "<pre>"; var_dump($login); echo "</pre>"; exit;
             if ($login != false) {
-
-                if ($login->uid == 1 && $request['empresa'] == 0) {
-                    $this->dat = $this->model->getEmproy(-1);
-                } else if ($login->uid == 1 && $request['empresa']) {
-                    $this->dat = $this->model->getEmproy($request['empresa']);
-                } else {
-                    $this->dat = $this->model->getEmproy($request['empresa']);
-                }
-                $this->session->putCookie($login->tocken);
-                if ($login && $this->dat[0]['id'] != 0) {
-                    $this->session->init();
-                    $this->session->add('userID',  $login->id);
-                    $this->session->add('rolID', $login->id_rol);
-                    $this->session->add('name', $login->name);
-                    $this->model->loging("INGRESO AL SISTEMA: ".date('Y-m-d H:i:s'));
-                    //var_dump($this->session->getStatus());
-                    //echo session_id();
-                    header('Location:'.BASE_URL.'/main');
-                } else {
-                    $this->dat = $this->model->getEmproy();
-                    $this->params = array(
-                            'dat'    => $this->dat,
-                            'error'  => 'Login Incorrecto. Acceso Denegado', 
-                            'objeto' => 'form.login',
-                            'index'  => true);
-                    $this->render(__CLASS__, $this->params);
-                }    
+                $this->session->putCookie($login->token);
+                $this->session->init();
+                $this->session->add('id',  $login->id);
+                $this->session->add('id_rol', $login->id_rol);
+                $this->session->add('username', $login->username);
+                $this->model->logger("INGRESO AL SISTEMA: ".date('Y-m-d H:i:s'));
+                //var_dump($this->session->getStatus());
+                //echo session_id();
+                header('Location:'.BASE_URL.'/home');
             } else {
-                $this->dat = $this->model->getEmproy();
                 $this->params = array(
-                        'dat'    => $this->dat,
-                        'error'  => 'Empresa Incorrecta. Acceso Denegado', 
+                        'error'  => 'Login Incorrecto. Acceso Denegado',
                         'objeto' => 'form.login',
                         'index'  => true);
                 $this->render(__CLASS__, $this->params);

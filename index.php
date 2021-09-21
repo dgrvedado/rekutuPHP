@@ -3,57 +3,35 @@
 define('BASEPATH', true);
 
 require (__DIR__."/config/config.php");
+require (CONFIG_PATH."/Coneccion.php");
+require (CORE_PATH."/autoload.php");
+require (LIBS_PATH."/Sesiones.php");
 
-//include_once (LIBS_PATH."/Install.php");
-//$install = new Install();
+/**
+ * Nivel de errores notificados
+ */
+error_reporting(ERROR_REPORTING_LEVEL);
+/**
+ * Inicializa Router y detección de valores de la URI
+ */
+$router     = new Router();
+$controller = $router->getController();
+$method     = $router->getMethod();
+$param      = $router->getParam();
 
-//if ($install->chkInstall()) {
-    //$install->__destruct();
-    require (CONFIG_PATH."/Coneccion.php");
-    require (CORE_PATH."/autoload.php");
-    require (LIBS_PATH."/Sesiones.php");
+/**
+ * Validaciones e inclusión del controlador y el metodo
+ */
+//var_dump(CoreHelper::validateController($controller));
+if(!CoreHelper::validateController($controller))
+    $controller = 'ErrorPage';
 
-    /**
-     * Nivel de errores notificados
-     */
-    error_reporting(ERROR_REPORTING_LEVEL);
+require CONTROLLER_PATH."/{$controller}/{$controller}Controller.php";
 
+$controller .= 'Controller';
 
-    /**
-     * Inicializa Router y detección de valores de la URI
-     */
-    $router     = new Router();
-    $controller = $router->getController();
-    $method     = $router->getMethod();
-    $param      = $router->getParam();
-
-    /**
-     * Validaciones e inclusión del controlador y el metodo
-     */
-    //var_dump(CoreHelper::validateController($controller));
-    if(!CoreHelper::validateController($controller))
-        $controller = 'ErrorPage';
-
-    require CONTROLLER_PATH."/{$controller}/{$controller}Controller.php";
-
-    $controller .= 'Controller';
-
-    if(!CoreHelper::validateMethodController($controller, $method))
-        $method = 'index';
-/*} else {
-    require (CORE_PATH."/autoload.php");
-
-    $router     = new Router();
-    $controller = 'Install';
-    $method     = 'index';
-
-    require CONTROLLER_PATH."/{$controller}/{$controller}Controller.php";
-
-    $controller .= 'Controller';
-
-    if(!CoreHelper::validateMethodController($controller, $method))
-        $method = 'index';
-}*/
+if(!CoreHelper::validateMethodController($controller, $method))
+    $method = 'index';
 
 /**
  * Ejecución final del controlador, método y parámetro obtenido por URI
