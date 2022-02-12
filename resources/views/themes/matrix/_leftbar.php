@@ -9,7 +9,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav" class="p-t-30">
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL?>/main" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?=BASE_URL?>/home" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
                 <?php if (@$_SESSION["menu"] == true) { ?>
                 <li class="sidebar-item">
@@ -47,15 +47,15 @@
                     </ul>
                 </li>
                 <?php }
-                    if (@$_SESSION["type"] == 1) { ?>
+                    if (@$_SESSION["id_rol"] == 1) { ?>
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Sistema </span></a>
                     <ul aria-expanded="false" class="collapse  first-level">
                         <li class="sidebar-item">
-                            <a href="<?=BASE_URL?>/system/listusers" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Usuarios </span></a>
-                        </li>
+                            <a href="<?=BASE_URL?>/roles/index" class="sidebar-link"><i class="mdi mdi-checkbox-multiple-marked"></i><span class="hide-menu"> Roles </span></a>
+                        </li>                    
                         <li class="sidebar-item">
-                            <a href="<?=BASE_URL?>/system/listroles" class="sidebar-link"><i class="mdi mdi-checkbox-multiple-marked"></i><span class="hide-menu"> Roles </span></a>
+                            <a href="<?=BASE_URL?>/users/index" class="sidebar-link"><i class="mdi mdi-account-multiple"></i><span class="hide-menu"> Usuarios </span></a>
                         </li>
                         <li class="sidebar-item">
                             <a href="<?=BASE_URL?>/system/setting" class="sidebar-link"><i class="mdi mdi-settings-box"></i><span class="hide-menu"> Configuración </span></a>
@@ -65,8 +65,6 @@
                 <?php } ?>
             </ul>
         </nav>
-        <!--- DO NOT EDIT - GlobalSign SSL Site Seal Code - DO NOT EDIT ---><table width=125 border=0 cellspacing=0 cellpadding=0 title="CLICK TO VERIFY: This site uses a GlobalSign SSL Certificate to secure your personal information." ><tr><td><span id="ss_img_wrapper_gmogs_image_110-45_en_black"><a href="https://www.globalsign.com/" target=_blank title="GlobalSign Site Seal" rel="nofollow"><img alt="SSL" border=0 id="ss_img" src="//seal.globalsign.com/SiteSeal/images/gs_noscript_110-45_en.gif"></a></span><script type="text/javascript" src="//seal.globalsign.com/SiteSeal/gmogs_image_110-45_en_black.js"></script></td></tr></table><!--- DO NOT EDIT - GlobalSign SSL Site Seal Code - DO NOT EDIT --->
-        <!-- End Sidebar navigation -->
     </div>
     <!-- End Sidebar scroll-->
 </aside>

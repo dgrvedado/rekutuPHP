@@ -13,7 +13,7 @@
                 <!-- Logo text -->
                 <span class="logo-text">
                      <!-- dark Logo text -->
-                     <img src="<?=ASSETS_URL?>/assets/images/logo_master-line.png" class="light-logo" width="95%" />
+                     <img src="<?=ASSETS_URL?>/assets/images/logo.png" class="light-logo" width="95%" />
 
                 </span>
             </a>

@@ -92,7 +92,7 @@ class Model {
             $stmt = $db->prepare($sql);
             //$stmt->bindParam("id", $id,PDO::PARAM_INT);
             $stmt->execute();
-            $this->loging($sql);
+            $this->logger($sql);
             $db = null;
             return true;
         }
@@ -114,7 +114,7 @@ class Model {
             //$stmt->bindParam("table", $table,PDO::PARAM_INT);
             //$stmt->bindParam("where", $where,PDO::PARAM_INT);
             $stmt->execute();
-            $this->loging($sql);
+            $this->logger($sql);
             $db = null;
             return true;
         } catch(PDOException $e) {
@@ -131,7 +131,7 @@ class Model {
             //echo $sql; //exit;
             $stmt = $db->prepare($sql);
             $stmt->execute();
-            $this->loging($sql);
+            $this->logger($sql);
             $db = null;
             return true;
         } catch(PDOException $e) {

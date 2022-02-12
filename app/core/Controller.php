@@ -46,4 +46,12 @@ abstract class Controller {
             $this->model = new $modelName();
         }
     }
+
+    /**
+    * Debbug      
+    **/
+    public function dd($request) {
+        var_dump($request);
+        exit;
+    }
 }

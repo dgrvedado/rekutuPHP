@@ -9,6 +9,7 @@
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
                 <h4 class="page-title">Dashboard</h4>
+                <?php print_r($_SESSION); ?>
             </div>
         </div>
     </div>
