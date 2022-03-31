@@ -95,9 +95,7 @@ Toda esta lógica se basa en la siguiente estructura:
 
 * '**/app/controllers**' -> Se crearán todos los directorios (carpetas) por cada controlador y dentro el archivo controlador con la forma 'NombreController.php'. El directorio creado debe comenzar con mayúsculas. Ej: 'Controlador'
 
-* '**/app/models**'      -> Se creará archivos por cada controlador si lo requiere, usa la nomenclatura '_Nombre.php_' o sea el nombre del archivo debe comenzar con Mayúsculas.
-
-Se recomienda que tanto el Controaldor como el Modelo, tengan el mismo nombre. Ej:
+* '**/app/models**'      -> Se creará archivos por cada controlador si lo requiere, usa la nomenclatura '_Nombre.php_' o sea el nombre del archivo debe comenzar con Mayúsculas. Se recomienda que tanto el Controaldor como el Modelo, tengan el mismo nombre. Ej:
 
     * Controlador: ReportesController.php
 
