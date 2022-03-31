@@ -98,10 +98,10 @@ Toda esta lógica se basa en la siguiente estructura:
 * '**/app/models**'      -> Se creará archivos por cada controlador si lo requiere, usa la nomenclatura '_Nombre.php_' o sea el nombre del archivo debe comenzar con Mayúsculas.
 
 Se recomienda que tanto el Controaldor como el Modelo, tengan el mismo nombre. Ej:
-    - Controlador: ReportesController.php
-    - Modelo: Reporte.php
+    * Controlador: ReportesController.php
+    * Modelo: Reporte.php
 
 * '**/resourse/views/**'  -> Directorio para crear las vistas, se crearán directorios por cada Controlador existente y dentro irán las vistas necesarias con la siguiente estructura de nombres de archivo '_\_theme.nombrevista.php_'. El directorio creado debe ser todo en Minúsculas. Ej:
-    - Directorio: /resourse/views/reportes/
-    - Vista Index: '\_matrix.index.php'
+    * Directorio: /resourse/views/reportes/
+    * Vista Index: '\_matrix.index.php'
 
