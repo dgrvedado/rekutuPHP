@@ -63,36 +63,45 @@ Directorio: /resources/views/themes/matrix/
 'matrix' puede ser el nombre de su tema o template.
 
 En dependencia de las secciones que Ud desee realizar, yo propongo la siguiente seccionamiento:
-* '_foot.php'    -> Pié de cada página, este va incluido en _wrapper.php
-* '_footers.php' -> Final de cada página con los JS para el proyecto en general.
-* '_head.php'    -> Encabezado para el Layout del Login
-* '_headers.php' -> Encabezado para el Layout dentro del sistema
-* '_layout.php'  -> Esqueleto completo de la plantilla
-* '_leftbar.php' -> Barra del Menu Lateral Izquierdo
-* '_navbar.php'  -> Barra de Navegación superior
-* '_wrapper.php' -> Contenido en concreto de cada página
+* '\_foot.php'    -> Pié de cada página, este va incluido en \_wrapper.php
+* '\_footers.php' -> Final de cada página con los JS para el proyecto en general.
+* '\_head.php'    -> Encabezado para el Layout del Login
+* '\_headers.php' -> Encabezado para el Layout dentro del sistema
+* '\_layout.php'  -> Esqueleto completo de la plantilla
+* '\_leftbar.php' -> Barra del Menu Lateral Izquierdo
+* '\_navbar.php'  -> Barra de Navegación superior
+* '\_wrapper.php' -> Contenido en concreto de cada página
 
-En este caso el archivo principal será '_layout.php' el mismo tendrá los include de cada una de las secciones antes mencionadas.
+En este caso el archivo principal será '\_layout.php' el mismo tendrá los include de cada una de las secciones antes mencionadas.
 
 
 # Explicación del Sistema
 
-Basamos el funcionamiento en un index que siempre recibirá todas las solicitudes request, por medio del .htaccess que redirige todas al index en si. El index chequeará si por medio de un autload las funciones existentes por medio de las rutas definidas en la URL, y de ella saldrán los controladores y métodos a ser usados. 
+Basamos el funcionamiento en un index que siempre recibirá todas las solicitudes request, por medio del .htaccess que redirige todas al index en si. El index chequeará si por medio de un **autoload** las funciones existentes por medio de las rutas definidas en la URL, y de ella saldrán los controladores y métodos a ser usados.
 
 Toda esta lógica se basa en la siguiente estructura:
 
-* '/app/core' -> Directorio del nucleo del sistema. Posee varios archivos 'autoload.php', 'Controller.php', 'Model.php', 'Router.php' y 'View.php'. En todo caso index parte del llamado de autoload y el mismo será quien cargue todas las funciones de los diferentes archivos.
+* '**/app/core**' -> Directorio del nucleo del sistema. Posee varios archivos 'autoload.php', 'Controller.php', 'Model.php', 'Router.php' y 'View.php'. En todo caso index parte del llamado de autoload y el mismo será quien cargue todas las funciones de los diferentes archivos.
 
-    * 'Router.php' -> Define las rutas del sistema, evaluando si existe la clase y las funciones que serán parte de las rutas a ser accedidas.
+    * '**Router.php**' -> Define las rutas del sistema, evaluando si existe la clase y las funciones que serán parte de las rutas a ser accedidas.
 
-    * 'Controller.php' -> Sería el Controlador principal que posee la carga del modelo propio y de las vistas definidas dentro del controlador de cada sección.
+    * '**Controller.php**' -> Sería el Controlador principal que posee la carga del modelo propio y de las vistas definidas dentro del controlador de cada sección.
 
-    * 'Model.php' -> Sería el modelo principal con acceso a la conexión a la BD, y las funciones que realizan las tareas generales de ABM en la BD del sistema.
+    * '**Model.php**' -> Sería el modelo principal con acceso a la conexión a la BD, y las funciones que realizan las tareas generales de ABM en la BD del sistema.
 
-    * 'View.php' -> No es más que la lógica que arma las vistas de cada función del controlador.
+    * '**View.php**' -> No es más que la lógica que arma las vistas de cada función del controlador.
 
-* '/app/helpers/' -> Directorio que contiene un archivo para verificar que existen los metodos y funciones.
+* '**/app/helpers/**' -> Directorio que contiene un archivo para verificar que existen los metodos y funciones.
 
-* '/app/controllers' -> Se crearán todas las carpetas por cada controlador y dentro el archivo controlador con la forma 'NombreController.php'
+* '**/app/controllers**' -> Se crearán todos los directorios (carpetas) por cada controlador y dentro el archivo controlador con la forma 'NombreController.php'. El directorio creado debe comenzar con mayúsculas. Ej: 'Controlador'
 
-* '/app/models'      -> Se creará archivos por cada controlador si lo requiere 
+* '**/app/models**'      -> Se creará archivos por cada controlador si lo requiere, usa la nomenclatura '_Nombre.php_' o sea el nombre del archivo debe comenzar con Mayúsculas.
+
+Se recomienda que tanto el Controaldor como el Modelo, tengan el mismo nombre. Ej:
+ - Controlador: ReportesController.php
+ - Modelo: Reporte.php
+
+* '**/resourse/views/**'  -> Directorio para crear las vistas, se crearán directorios por cada Controlador existente y dentro irán las vistas necesarias con la siguiente estructura de nombres de archivo '_\_theme.nombrevista.php_'. El directorio creado debe ser todo en Minúsculas. Ej:
+ - Directorio: /resourse/views/reportes/
+ - Vista Index: '\_matrix.index.php'
+
