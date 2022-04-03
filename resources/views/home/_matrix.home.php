@@ -29,7 +29,7 @@
                 <div class="card card-hover">
                     <div class="box bg-cyan text-center">
                         <h1 class="font-light text-white"><i class="fas fa-ship"></i></h1>
-                        <h6 class="text-white">Total de HBL</h6>
+                        <h6 class="text-white">DATO A</h6>
                         <span class="text-white"><?=@$dashboard[0]["num"]?></span>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="card card-hover">
                     <div class="box bg-success text-center">
                         <h1 class="font-light text-white"><i class="mdi mdi-calendar-clock"></i></h1>
-                        <h6 class="text-white">HBL Notificados</h6>
+                        <h6 class="text-white">DATO B</h6>
                         <span class="text-white"><?=@$dashboard[1]["num"]?></span>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="card card-hover">
                     <div class="box bg-danger text-center">
                         <h1 class="font-light text-white"><i class="mdi mdi-calendar-remove"></i></h1>
-                        <h6 class="text-white">HBL Sin Notificar</h6>
+                        <h6 class="text-white">DATO C</h6>
                         <span class="text-white"><?=@$dashboard[2]["num"]?></span>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="card card-hover">
                     <div class="box bg-warning text-center">
                         <h1 class="font-light text-white"><i class="fas fa-thumbs-up"></i></h1>
-                        <h6 class="text-white">Notificaciones Cerradas</h6>
+                        <h6 class="text-white">DATO D</h6>
                         <span class="text-white"><?=@$dashboard[3]["num"]?></span>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Total de HBL: <?=@$dashboard[0]["num"]?></h5>
+                        <h5 class="card-title">Total de DATO: <?=@$dashboard[0]["num"]?></h5>
                         <div class="pie" style="height: 400px;"></div>
                     </div>
                 </div>
