@@ -107,3 +107,8 @@ Toda esta lógica se basa en la siguiente estructura:
 
     * Vista Index: '\_matrix.index.php'
 
+# Licencia
+
+El presente proyecto se distribuye con Licencia AGPL para hacerlo Software Libre 100%.
+
+Otras herramientas o diseños se distribuyen bajo su propia Licencia (Matrix Admin Panel - MIT)
