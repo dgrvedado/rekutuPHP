@@ -11,6 +11,9 @@ abstract class Controller {
    */
     private $view;
 
+    public $name_model;
+    public $model;
+
     public function __construct($class_name){
         $this->name_model = str_replace('Controller', '', $class_name);
         $this->loadModel($this->name_model);
