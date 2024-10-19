@@ -17,7 +17,7 @@ class View {
     /**
     * array
     */
-    protected $params;
+    public $params;
 
     /**
     * Inicializa valores y el render
