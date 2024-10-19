@@ -64,12 +64,15 @@ class Router {
     * Asigna el valor del parametro si existe segun el metodo de peticion
     */
     public function setParam() {
-        if(REQUEST_METHOD === 'POST')
+        if(REQUEST_METHOD === 'POST') {
             $this->param = $_POST;
-        else if (REQUEST_METHOD === 'GET')
-            //$this->param = ! empty($this->uri[4]) ? $this->uri[4] : '';
-            //header('Location:'.BASE_URL.'/main');
-            $this->param = '';
+        } else if (REQUEST_METHOD === 'GET'){ 
+            if (FOLDER_PATH != '') {
+                $this->param = ! empty($this->uri[4]) ? $this->uri[4] : '';
+            } else {
+                $this->param = ! empty($this->uri[3]) ? $this->uri[3] : '';
+            }
+        }
     }
     /**
     * @return $uri
